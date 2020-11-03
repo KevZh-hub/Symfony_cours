@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+
+<h1>Articles</h1>
+
+<table border="1">
+    <thread>
+        <tr>
+            <th>Nom</th>
+            <th>Creation</th>
+        </tr>
+    </thread>
+
+    <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>
+                    <a href="{{ path('showArticle', {'id': article.id }) }}">
+                        {{article.titre}}
+                    </a>
+                </td>   
+                <td>{{article.creation|date('d/m/Y')}}</td>
+                <td>
+                <a href="{{ path('deleteArticle', {'id': article.id }) }}">
+                        Supprimer
+                    </a>
+                </td>
+            <tr>
+        {% else %}
+            <tr>
+                <td>Il n'y a pas d'articles</td>
+            <tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Ajouter un article</h2>
+{{ form(ajout) }}
+
+
+{% endblock %}

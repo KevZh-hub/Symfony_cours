@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{article.titre}}</h1>
+    <p>{{article.creation|date('d/m/Y')}}</p>
+
+    <h2>Modifier l'article</h2>
+    {{ form(maj) }}
+{% endblock %}
